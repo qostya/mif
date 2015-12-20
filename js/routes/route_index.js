@@ -3,26 +3,25 @@
 angular.module('App').config([
     '$stateProvider',
     '$urlRouterProvider',
-        ($stateProvider, $urlRouterProvider) => {
-            let pathToModules = './js/modules/';
+    'CONSTS',
+    ($stateProvider, $urlRouterProvider, CONSTS) => {
+        $urlRouterProvider.otherwise('/index');
 
-            $urlRouterProvider.otherwise('/index');
-
-            $stateProvider
-                .state('index', {
-                    abstract: true,
-                    url: '',
-                    views: {
-                        '': {
-                            template: '<div ui-view></div>'
-                        },
-                        header: {
-                            templateUrl: pathToModules + 'header/views/header.html'
-                        }
+        $stateProvider
+            .state('index', {
+                abstract: true,
+                url: '',
+                views: {
+                    '': {
+                        template: '<div ui-view></div>'
+                    },
+                    header: {
+                        templateUrl: CONSTS.pathToModules + 'header/views/header.html'
                     }
-                })
-                .state('index.main', {
-                    url: '/index'
-                });
-        }
+                }
+            })
+            .state('index.main', {
+                url: '/index'
+            });
+    }
 ]);

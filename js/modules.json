@@ -1,5 +1,8 @@
 {
   "custom": [
-
+    "searchForm"
+  ],
+  "vendor": [
+    "ui.router"
   ]
 }

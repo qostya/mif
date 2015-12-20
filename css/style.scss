@@ -1,3 +1,62 @@
-body {
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
 
+@mixin box-shadow($shadow) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.b-header {
+  padding-top: 60px;
+
+  &_search {
+    padding-top: 3px;
+  }
+}
+
+.b-search-form {
+  position: relative;
+  font-size: 15px;
+  padding-right: 4px;
+  margin-left: -4px;
+
+  &_enter {
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+
+  &_field {
+    line-height: 30px;
+    width: 100%;
+    height: 30px;
+    padding-left: 32px;
+    border: 1px solid #b2b2b2;
+    position: relative;
+    z-index: 2;
+    background-color: transparent;
+    @include box-shadow(0 1px 4px 0 #bfbfbf inset);
+    @include border-radius(15px);
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .icn-search {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    z-index: 1;
+  }
 }

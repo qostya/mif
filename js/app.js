@@ -1,15 +1,16 @@
-'use strict';
+"use strict";
 
 (function (angular) {
+    angular.module("searchForm", []);
+})(angular);
 
-    angular.module('App', ['ui.router']);
+(function (angular) {
+    angular.module('App', ["searchForm", "ui.router"]);
 })(angular);
 
 (function (angular) {
 
-    angular.module('App').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-        var pathToModules = './js/modules/';
-
+    angular.module('App').config(['$stateProvider', '$urlRouterProvider', 'CONSTS', function ($stateProvider, $urlRouterProvider, CONSTS) {
         $urlRouterProvider.otherwise('/index');
 
         $stateProvider.state('index', {
@@ -20,7 +21,7 @@
                     template: '<div ui-view></div>'
                 },
                 header: {
-                    templateUrl: pathToModules + 'header/views/header.html'
+                    templateUrl: CONSTS.pathToModules + 'header/views/header.html'
                 }
             }
         }).state('index.main', {
@@ -29,4 +30,19 @@
     }]);
 })(angular);
 
-(function (angular) {})(angular);
+(function (angular) {
+    angular.module('searchForm').directive('searchForm', ['CONSTS', function (CONSTS) {
+        return {
+            restrict: 'A',
+            templateUrl: CONSTS.pathToModules + 'searchForm/views/search_form.html'
+        };
+    }]);
+})(angular);
+
+(function (angular) {
+    angular.module('App').constant('CONSTS', (function () {
+        return {
+            pathToModules: './js/modules/'
+        };
+    })());
+})(angular);
