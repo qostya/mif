@@ -5,6 +5,7 @@ angular.module('App').config([
     '$urlRouterProvider',
     'CONSTS',
     ($stateProvider, $urlRouterProvider, CONSTS) => {
+
         $urlRouterProvider.otherwise('/index');
 
         $stateProvider
@@ -13,7 +14,7 @@ angular.module('App').config([
                 url: '',
                 views: {
                     '': {
-                        template: '<div ui-view></div>'
+                        templateUrl: CONSTS.pathToModules + 'main/views/main.html'
                     },
                     header: {
                         templateUrl: CONSTS.pathToModules + 'header/views/header.html'
@@ -21,7 +22,12 @@ angular.module('App').config([
                 }
             })
             .state('index.main', {
-                url: '/index'
+                url: '/index',
+                views: {
+                    singleBook: {
+                        templateUrl: CONSTS.pathToModules + 'singleBook/views/single_book.html'
+                    }
+                }
             });
     }
 ]);

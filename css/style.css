@@ -1,6 +1,7 @@
 body {
   font-family: Arial, sans-serif;
-  font-size: 14px; }
+  font-size: 14px;
+  color: #000; }
 
 .b-header {
   padding-top: 60px; }
@@ -39,5 +40,16 @@ body {
     top: 6px;
     left: 8px;
     z-index: 1; }
+
+.b-big-title {
+  margin: 60px 0 50px; }
+  .b-big-title h1 {
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+    margin: -0.36em 0 -0.2em; }
+
+.b-single-book_holder {
+  margin: 0 -10px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -10,24 +10,23 @@ let gulp = require('gulp'),
 function toJsModule (content) {
     let replaced = content.replace('\'use strict\';', '');
 
-    return '((angular) => {' + replaced + '\n})(angular);\n';
+    return replaced; //'((angular) => {' + replaced + '\n})(angular);\n';
 }
 
 function createAngularModules() {
-    var modulesCache = '((angular) => {';
+    var modulesCache = '';
 
     for (let i = 0, l = modules.custom.length; l > i; i++) {
-        modulesCache += 'angular.module("' + modules.custom[i] + '", [])\n\n';
+        modulesCache += 'angular.module("' + modules.custom[i] + '", []);\n\n';
     }
 
-    modulesCache += '})(angular);';
     return modulesCache;
 }
 
 function createMainModule() {
     var allModules = modules.custom.concat(modules.vendor);
 
-    return '((angular) => {angular.module(\'App\', ["' + allModules.join('",  "') + '"]);})(angular);';
+    return 'angular.module(\'App\', ["' + allModules.join('",  "') + '"]);';
 }
 
 function concatContentAndCustomData(data) {

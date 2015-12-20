@@ -1,48 +1,43 @@
 "use strict";
 
-(function (angular) {
-    angular.module("searchForm", []);
-})(angular);
+angular.module("searchForm", []);
 
-(function (angular) {
-    angular.module('App', ["searchForm", "ui.router"]);
-})(angular);
+angular.module('App', ["searchForm", "ui.router"]);
 
-(function (angular) {
+angular.module('App').config(['$stateProvider', '$urlRouterProvider', 'CONSTS', function ($stateProvider, $urlRouterProvider, CONSTS) {
 
-    angular.module('App').config(['$stateProvider', '$urlRouterProvider', 'CONSTS', function ($stateProvider, $urlRouterProvider, CONSTS) {
-        $urlRouterProvider.otherwise('/index');
+    $urlRouterProvider.otherwise('/index');
 
-        $stateProvider.state('index', {
-            abstract: true,
-            url: '',
-            views: {
-                '': {
-                    template: '<div ui-view></div>'
-                },
-                header: {
-                    templateUrl: CONSTS.pathToModules + 'header/views/header.html'
-                }
+    $stateProvider.state('index', {
+        abstract: true,
+        url: '',
+        views: {
+            '': {
+                templateUrl: CONSTS.pathToModules + 'main/views/main.html'
+            },
+            header: {
+                templateUrl: CONSTS.pathToModules + 'header/views/header.html'
             }
-        }).state('index.main', {
-            url: '/index'
-        });
-    }]);
-})(angular);
+        }
+    }).state('index.main', {
+        url: '/index',
+        views: {
+            singleBook: {
+                templateUrl: CONSTS.pathToModules + 'singleBook/views/single_book.html'
+            }
+        }
+    });
+}]);
 
-(function (angular) {
-    angular.module('searchForm').directive('searchForm', ['CONSTS', function (CONSTS) {
-        return {
-            restrict: 'A',
-            templateUrl: CONSTS.pathToModules + 'searchForm/views/search_form.html'
-        };
-    }]);
-})(angular);
+angular.module('searchForm').directive('searchForm', ['CONSTS', function (CONSTS) {
+    return {
+        restrict: 'A',
+        templateUrl: CONSTS.pathToModules + 'searchForm/views/search_form.html'
+    };
+}]);
 
-(function (angular) {
-    angular.module('App').constant('CONSTS', (function () {
-        return {
-            pathToModules: './js/modules/'
-        };
-    })());
-})(angular);
+angular.module('App').constant('CONSTS', (function () {
+    return {
+        pathToModules: './js/modules/'
+    };
+})());
