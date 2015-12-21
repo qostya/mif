@@ -5,8 +5,8 @@ angular.module('singleBook').directive('eye',
             let dotParent = el[0].querySelector('.b-single-book_eye_wrapper'),
                 dot = dotParent.children[0],
                 elStartCoords = dotParent.getBoundingClientRect(),
-                eyeRadius = +attrs.eyeRadius,
-                eyeSpeed = +attrs.eyeSpeed,
+                eyeRadius = +attrs.eyeRadius || 53,
+                eyeSpeed = +attrs.eyeSpeed || 4,
                 averageLength = (window.innerWidth + window.innerHeight)/eyeSpeed;
 
             function eyeController (mouseX, mouseY) {
