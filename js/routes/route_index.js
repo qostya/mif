@@ -25,7 +25,8 @@ angular.module('App').config([
                 url: '/index',
                 views: {
                     singleBook: {
-                        templateUrl: CONSTS.pathToModules + 'singleBook/views/single_book.html'
+                        templateUrl: CONSTS.pathToModules + 'singleBook/views/single_book.html',
+                        controller: 'singleBookCtrl'
                     }
                 }
             });

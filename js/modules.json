@@ -1,6 +1,7 @@
 {
   "custom": [
-    "searchForm"
+    "searchForm",
+    "singleBook"
   ],
   "vendor": [
     "ui.router"

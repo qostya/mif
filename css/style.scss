@@ -98,13 +98,34 @@ body {
     background-color: #fff;
     @include border-radius(50%);
 
+    &_wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      width: 0;
+      height: 0;
+    }
+
+    &_dot {
+      width: 0;
+      height: 0;
+      position: relative;
+      top: 0;
+      left: 0;
+      display: block;
+    }
+
     i {
       width: 26px;
       height: 26px;
       position: absolute;
+      top: -13px;
+      left: -13px;
       background-color: #000;
-      left: 50px;
-      top: 50px;
+      display: block;
       @include border-radius(50%);
     }
   }
